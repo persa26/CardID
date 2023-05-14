@@ -2,8 +2,8 @@ import pymysql
 import requests
 from app import app
 from db_config import mysql
-from flask import render_template
-from flask import flash, request, jsonify
+from flask import render_template, flash, request, jsonify
+from models.employee import Employee
 
 @app.route('/', methods=['GET'])
 def add_employee():
@@ -117,6 +117,10 @@ def update_data():
     else:
         return jsonify({'error': 'Failed to fetch data'}), 500
 
+@app.route('/employees')
+def get_employees():
+    employees = Employee.query.all()
+    return jsonify([e.serialize() for e in employees])
 
 @app.errorhandler(404)
 def page_not_found(e):
