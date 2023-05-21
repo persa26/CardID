@@ -4,18 +4,20 @@ from app import db
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://test:test1234@localhost/test'
 # db = SQLAlchemy(app)
 
-class Employee(db.Model):
-    __tablename__ = 'employee'
+class Students(db.Model):
+    __tablename__ = 'Students'
 
     id = db.Column(db.Integer, primary_key=True)
-    uname = db.Column(db.String(64))
-    email = db.Column(db.String(64))
-    salary = db.Column(db.Integer)
+    name = db.Column(db.String(50))
+    surname = db.Column(db.String(50))
+    mail = db.Column(db.String(250))
+    rfid = db.Column(db.String(250))
 
     def serialize(self):
         return {
             'id': self.id,
             'name': self.uname,
-            'email': self.email,
-            'salary': self.salary
+            'surname': self.surname,
+            'mail': self.mail,
+            'rfid': self.rfid
         }
