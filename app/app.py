@@ -24,7 +24,15 @@ def read_data(rfid):
                 if student['rfid'] == rfid:
                     # Realizar la petición GET al servidor externo
                     response = requests.get(f"http://localhost:3080/api/v1/students/{student['id']}/locations/{data['location']['locationId']}/access/rfid")
-                    return response.json()
+                    canAccess = response.json()['canAccess']
+
+                    # Combinar el JSON externo y la información del estudiante en un nuevo diccionario
+                    result = {
+                        'student': student,
+                        'canAccess': canAccess
+                    }
+
+                    return jsonify(result)
                     # return jsonify(student)
             return 'RFID not found'
     except FileNotFoundError:
