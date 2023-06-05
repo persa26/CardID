@@ -1,0 +1,1 @@
+{"location": {"locationId": "3", "name": "Aula 101", "requireFacialRecognition": 1, "requireRfid": 1}, "students": [{"id": 2, "name": "Pedro", "surname": "Jose", "mail": "pjose@mail.com", "photo": "", "rfid": "987654321"}, {"id": 3, "name": "Antonio", "surname": "Test", "mail": "antoniotest@mail.com", "photo": "https://i.pravatar.cc/100?u=1685978263298", "rfid": "9998754"}]}
